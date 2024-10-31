@@ -1,4 +1,4 @@
-# DepthProScripts
+# DepthScripts
  A Curation of Useful Scripts to use with Apple Depth Pro and other depth models!!! <br>
 **Author:** [Timothy Do (dotimothy)](https://github.com/dotimothy)
 ## Installation
