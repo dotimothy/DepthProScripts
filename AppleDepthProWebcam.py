@@ -6,11 +6,21 @@ import matplotlib.cm as cm
 import time
 
 cam = cv.VideoCapture(0)
+config = depth_pro.DepthProConfig(
+    patch_encoder_preset="dinov2l16_384",
+    image_encoder_preset="dinov2l16_384",
+    checkpoint_uri="../ml-depth-pro/checkpoints/depth_pro.pt",
+    decoder_features=256,
+    use_fov_head=True,
+    fov_encoder_preset="dinov2l16_384",
+)
 use_cuda = torch.cuda.is_available()
 use_mps = torch.backends.mps.is_available()
 device = torch.device('cuda' if use_cuda else 'mps' if use_mps else 'cpu')
-model,transform = depth_pro.create_model_and_transforms(device=device)
+model,transform = depth_pro.create_model_and_transforms(device=device,config=config)
 model.eval()
+
+
 
 def depthOnCamLoop():
     done = False
